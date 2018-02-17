@@ -40,7 +40,13 @@ class grid:
     def reduceMNumber(self, count):
         self.mantarCount -= count
 	
-    def placeNewSlice(self, coord) :
+    def increaseMNumber(self,count):
+		self.mantarCount += count
+
+	def increaseTNumber(self,count):
+		self.domatesCount += count
+	
+	def placeNewSlice(self, coord) :
         # TODO
 
 		self.slices.append(slice((coord[0],coord[1]),self.board))
@@ -71,15 +77,12 @@ class grid:
 
 
 
-	def getOrderedSliceArray():
-		pass		
 
+	def getUntakenMCount(self):
+		return self.mantarCount
 
-
-
-
-
-
+	def getUntakenTCount(self):
+		return self.domatesCount
 
 
 
