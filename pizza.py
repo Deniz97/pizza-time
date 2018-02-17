@@ -24,14 +24,10 @@ class slice:
 
         # TODO 
 
-        
-        # @returns {direction:str,distance:int}
-
-    
     def checkAllDistances(self)
         # TODO
 
-class grid():
+class grid:
 	
     def __init__(self):
 	self.r, self.c, self.a, self.b = input().split()
@@ -61,17 +57,7 @@ class grid():
         self.minSliceByB = int(ceil(r * c / b))
 	self.maxSliceByA = self.mantarCount // a
 
-        """
-        self.remainingT = None
-	self.remainingM = None
-        """
-
 	self.slices = []
-
-    """
-    def populateGrid(self):
-	pass
-    """
 
     def isTaken(self, coord) -> bool:
         return board[coord[0]][coord[1]]
