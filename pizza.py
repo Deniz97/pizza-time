@@ -24,11 +24,12 @@ class slice:
 
         # TODO 
 
-        return (direction, dist)
-	# @returns {direction:str,distance:int}
+        
+        # @returns {direction:str,distance:int}
+
+    
     def checkAllDistances(self)
-	
-	pass
+        # TODO
 
 class grid():
 	
@@ -47,7 +48,6 @@ class grid():
                 else:
                     self.domatesCount += 1
 
-        
         # TODO WARNING
         if self.mantarCount > self.domatesCount:
             self.mantarCount, self.domatesCount = self.domatesCount, self.mantarCount
