@@ -26,7 +26,7 @@ class grid:
             self.mantar  = 'M'
             self.domates = 'T'
 
-			self.minSliceByB = int(ceil(r * c / b))
+		self.minSliceByB = int(ceil(r * c / b))
 		self.maxSliceByA = self.mantarCount // a
 
 		self.slices = []
@@ -86,8 +86,15 @@ class grid:
 
 
 
+	def getCurrentSliceCount(self):
+		return len(self.slices)
+
+	def minSliceCount(self):
+		return self.minSliceByB
 
 
+	def maxSliceCount(self):
+		return self.maxSliceByA 
 
 
 
