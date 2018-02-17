@@ -1,3 +1,5 @@
+from math import ceil
+
 class slice:
     def __init__(self, solust, sagalt, grid):
 	self.solust = solust
@@ -6,27 +8,27 @@ class slice:
 	self.tomatoCount = 0
 	self.grid = grid
 	
-    def move(self,direction:str):
-	pass
+    def move(self, direction:str):
+	# TODO
 
-	
+    def checkMinDist(self, direction:str):
+	diff = (0, 0)
+        if direction == 'U':
+            diff = (0, 1)
+        elif direction == 'D':
+            diff = (0, -1)
+        elif direction == 'R':
+            diff = (1, 0)
+        else #if direction == 'L':
+            diff = (-1, 1)
 
+        # TODO 
 
-    def checkMinDist(self,direction:str):
-	pass
-
-
+        return (direction, dist)
 	# @returns {direction:str,distance:int}
     def checkAllDistances(self)
 	
 	pass
-
-
-
-
-	
-
-from math import ceil
 
 class grid():
 	
