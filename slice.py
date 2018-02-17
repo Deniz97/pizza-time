@@ -38,6 +38,8 @@ class slice:
                     break
                 
                 dist += 1
+                
+                cell = (cell[0]-1, cell[1])
 
         elif direction == 'D':
             cell = (self.sagalt[0]+1, self.solust[1])  # inclusive
@@ -56,6 +58,8 @@ class slice:
                     break
                 
                 dist += 1
+                
+                cell = (cell[0]+1, cell[1])
 
         elif direction == 'R':
             cell = (self.solust[0], self.sagalt[1]+1)  # inclusive
@@ -74,6 +78,8 @@ class slice:
                     break
                 
                 dist += 1
+                
+                cell = (cell[0], cell[1]+1)
 
         else :#if direction == 'L'
             cell = (self.solust[0], self.solust[1]-1)  # inclusive
@@ -92,6 +98,8 @@ class slice:
                     break
                 
                 dist += 1
+                
+                cell = (cell[0], cell[1]-1)
 
         return dist
 
