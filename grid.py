@@ -47,6 +47,9 @@ class grid:
 	def setTaken(self, coord):
 		self.board[coord[0]][coord[1]][1] = True
 
+	def freeTaken(self, coord):
+		self.board[coord[0]][coord[1]][1] = False
+
 	def reduceTNumber(self, count):
 		self.domatesCount -= count
 
@@ -94,7 +97,7 @@ class grid:
 		ortY = sum( [ x[1] for x in ortalar ] ) / len(ortalar)
 
 		#now calculate all distances to free cell_type s and find the max
-		coord_with_max_distance = (0,0)
+		coord_with_max_distance = (-1,-1)
 		max_distance = 0
 		for i in range( len(self.board) ):
 			for j in range( len( self.board[0] ) ):
@@ -172,6 +175,29 @@ class grid:
 		self.reduceTNumber(domates)
 		self.reduceMNumber(mantar)
 
+
+	def markUntaken(self,solust,sagalt):
+		mantar = 0
+		domates = 0
+		(i,j) = solust
+
+		while i < sagalt[0]:
+			while j < sagalt[1]:
+
+				if self.isTaken((i,j)):
+					self.freeTaken((i,j))
+					if self.board[i][j][0] ==self.mantar:
+						mantar+=1
+					else: # ==domates
+						domates+=1
+				
+
+				j+=1
+			i+=1
+
+		self.increaseTNumber(domates)
+		self.increaseMNumber(mantar)
+
 	def placeFirstSlice(self):
 		
 		#REMEMBER: We assume domates>mantar at start
@@ -215,12 +241,22 @@ class grid:
 
 		else: #self.mantarCount > self.domatesCount
 			coord = self.getNewSlicePositionByDistance(self.domates)
-
-		self.placeNewSlice(coord)
+		if(coord) != (-1,-1):
+			self.placeNewSlice(coord)
+			return True
+		else:
+			return False
 
 		
 	def getOrderedSliceArray(self):
-
 		retval = sorted(self.slices,key=lambda x : x.setLegalMoveCount() )
 		return retval
+
+	def removeSlice(self):
+		sorte = sorted(self.slices,key=lambda x : x.sliceSize() )
+		minSlice = sorte[0]
+		
+		self.slices.remove(minSlice)
+
+
 

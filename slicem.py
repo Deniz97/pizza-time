@@ -22,6 +22,18 @@ class slicem:
         #not used
         oldCounts = self.grid.getMDcount(self.solust,self.sagalt)
         #not used
+        oldsize = self.sliceSize()
+
+        if direction=="U" or direction=="D":
+            projectedSize = oldsize + (self.sagalt[1] - self.solust[1] + 1)
+
+        elif direction=="R" or direction=="L":
+            projectedSize = oldsize + ( self.sagalt[0] - self.solust[0] + 1)
+
+        #print(oldsize, "bbb")
+        #print(projectedSize, "aaa")
+        if projectedSize > self.grid.b:
+            return False
 
         if direction=="U":
             self.solust = (self.solust[0]-1, self.solust[1])
@@ -39,8 +51,12 @@ class slicem:
 
 
         self.grid.markTaken(self.solust,self.sagalt)
+
+        return True
         
 
+    def sliceSize(self):
+        return  ( self.sagalt[0] - self.solust[0] + 1) *  (self.sagalt[1] - self.solust[1] + 1)
 
     def checkMinDist(self, direction:str):
         #print("min distance for: ",self.solust," ",self.sagalt," ",direction)
